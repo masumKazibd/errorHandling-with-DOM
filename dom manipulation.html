@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling : DOM</title>
+    <style>
+        body{
+            height: 500px;
+            width: 500px;
+            border: 1px solid gray;
+            border-radius: 25px;
+            padding: 20px;
+            margin: 20px auto;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        #Developer{
+            color: gray;
+            padding: 0px 0px 5px 20px;
+        }
+        button{
+            height: 40px;
+            width: 120px;
+            border-radius: 25px;
+            border-color: gray;
+            margin: 0 auto;
+        }
+        input{
+            height: 40px;
+            width: 300px;
+            border-radius: 25px;
+            border-color: gray;
+        }
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>চেকিং এরর...</h1>
+    <p id ="Developer">Who make this?</p>
+    <hr>
+    <input type="text" id="t1" placeholder="যেকোন কিছু লিখুন...">
+    <button type="button" onclick="myFunction()">চেক করুন</button>
+    <p id="msg">ভুল হলে এখানে দেখাবে...</p>
+
+    <!-- জাভাস্ক্রিপ্ট -->
+    <script>
+
+        function myFunction() {
+            var message, dev, x;
+            dev = "মাসুম কাজী";
+
+            document.getElementById("Developer").innerHTML = dev;
+            message = document.getElementById("msg");
+            x = document.getElementById("t1").value;
+            try{
+                if(x==""){
+                    throw "Empty"
+                }
+                if(isNaN (x)){
+                    throw "Not a Number"
+                }
+                mk = Number(x);
+                if(mk < 5){
+                    throw "too low"
+                }
+                if ( mk > 5){
+                    throw "too big"
+                }
+            }
+            catch (err) {
+                    message.innerHTML = "Input is " + err;
+                    message.className = "error";
+                }
+        }
+    </script>
+</body>
+</html>
